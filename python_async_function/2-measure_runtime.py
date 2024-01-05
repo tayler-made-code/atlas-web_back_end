@@ -8,3 +8,19 @@
     should return a float
 
     Use the time module to measure an approximate elapsed time """
+
+import asyncio
+import random
+import time
+import typing
+import importlib
+basic_async_syntax = importlib.import_module("1-concurrent_coroutines")
+wait_random = basic_async_syntax.wait_n
+
+
+def measure_time(n: int, max_delay: int) -> float:
+    """ Returns total_time / n """
+    start = time.perf_counter()
+    asyncio.run(wait_random(n, max_delay))
+    end = time.perf_counter()
+    return (end - start) / n
