@@ -10,9 +10,7 @@
     Use the time module to measure an approximate elapsed time """
 
 import asyncio
-import random
 import time
-import typing
 import importlib
 basic_async_syntax = importlib.import_module("1-concurrent_coroutines")
 wait_random = basic_async_syntax.wait_n
