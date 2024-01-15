@@ -60,3 +60,16 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     db_name = os.getenv('PERSONAL_DATA_DB_NAME')
     return mysql.connector.connect(user=user, password=password,
                                    host=host, database=db_name)
+
+def main():
+    """ Main function """
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT COUNT(*) FROM users;")
+    for row in cursor:
+        print(row[0])
+    cursor.close()
+    db.close()
+
+if __name__ == '__main__':
+    main()
