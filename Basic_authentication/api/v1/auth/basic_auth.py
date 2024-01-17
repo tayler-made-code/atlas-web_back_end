@@ -62,19 +62,18 @@ class BasicAuth(Auth):
             return None
         if user_pwd is None or type(user_pwd) is not str:
             return None
-        # Return None if your database (file) doesn’t contain any User instance with email equal to user_email - you should use the class method search of the User to lookup the list of users based on their email. Don’t forget to test all cases: “what if there is no user in DB?”, etc.
         try:
-            # Return None if your database (file) doesn’t contain any User instance with email equal to user_email - you should use the class method search of the User to lookup the list of users based on their email. Don’t forget to test all cases: “what if there is no user in DB?”, etc.
             if User.search({'email': user_email}) == []:
                 return None
         except Exception:
             return None
-        
 
-        # Return None if user_pwd is not the password of the User instance found - you must use the method is_valid_password of User
         try:
-            """ Return None if user_pwd is not the password of the User instance found - you must use the method is_valid_password of User """
-            if User.search({'email': user_email})[0].is_valid_password(user_pwd) is False:
+            """ Return None if user_pwd is not the password of the User
+                instance found - you must use the method is_valid_password
+                of User """
+            if User.search(
+                {'email': user_email})[0].is_valid_password(user_pwd) is False:
                 return None
         except Exception:
             return None
