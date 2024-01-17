@@ -72,8 +72,8 @@ class BasicAuth(Auth):
             """ Return None if user_pwd is not the password of the User
                 instance found - you must use the method is_valid_password
                 of User """
-            if User.search(
-                {'email': user_email})[0].is_valid_password(user_pwd) is False:
+            if User.search({'email': user_email})[0].is_valid_password(
+              user_pwd) is False:
                 return None
         except Exception:
             return None
