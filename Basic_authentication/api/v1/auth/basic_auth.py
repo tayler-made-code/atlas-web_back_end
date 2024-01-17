@@ -8,4 +8,4 @@ from typing import List, TypeVar
 
 
 class BasicAuth(Auth):
-  """ basic auth class """
+    """ basic auth class """
