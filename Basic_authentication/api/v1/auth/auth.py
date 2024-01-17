@@ -17,11 +17,9 @@ class Auth():
         """ require auth public method """
         return False
 
-
     def authorization_header(self, request=None) -> str:
         """ authorization header public method """
         return None
-    
 
     def current_user(self, request=None) -> TypeVar('User'):
         """ current user public method"""
