@@ -88,7 +88,7 @@ class BasicAuth(Auth):
             You must use decode_base64_authorization_header
             You must use extract_user_credentials
             You must use user_object_from_credentials """
-        
+
         if request is None:
             return None
 
@@ -96,7 +96,7 @@ class BasicAuth(Auth):
         base64_header = self.extract_base64_authorization_header(auth_header)
         decoded_header = self.decode_base64_authorization_header(base64_header)
         user_credentials = self.extract_user_credentials(decoded_header)
-        
+
         if user_credentials is None:
             return None
 
