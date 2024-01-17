@@ -3,12 +3,10 @@
 """ BasicAuth module """
 
 from flask import request
-from typing import List, TypeVar
-from os import getenv
-from api.v1.auth.auth import Auth
 
-class Auth():
-    """ BasicAuth class """
+
+class Auth:
+    """ Auth class """
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """ require_auth """
