@@ -3,6 +3,7 @@
 """ Auth module """
 import bcrypt
 
+
 def _hash_password(password):
     """ Method that takes in a password string arguments and returns bytes.
     """
