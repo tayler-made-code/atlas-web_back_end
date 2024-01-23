@@ -4,14 +4,7 @@
 
 import os
 from api.v1.auth.auth import Auth
-from api.v1.auth.session_auth import SessionAuth
 import uuid
-
-auth_type = os.getenv("AUTH_TYPE")
-if auth_type == "session_auth":
-    auth = SessionAuth()
-else:
-    auth = Auth()
 
 
 class SessionAuth(Auth):
