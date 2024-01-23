@@ -53,4 +53,4 @@ class DB:
                 raise NoResultFound("No user found.")
             return result
         except InvalidRequestError as e:
-            raise InvalidRequestError(f"InvalidRequestError: {e}")
+            raise e
