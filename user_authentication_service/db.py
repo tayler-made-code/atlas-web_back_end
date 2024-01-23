@@ -38,4 +38,4 @@ class DB:
         session = self._session
         session.add(new_user)
         session.commit()
-        return None
+        return new_user
