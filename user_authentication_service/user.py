@@ -3,9 +3,12 @@
 """ SQLAlchemy model for User for a database table named users """
 
 from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 
-class User():
+class User(Base):
     """ SQLAlchemy representation of a User """
 
     __tablename__ = 'users'
