@@ -2,16 +2,15 @@
 
 """ handles all routes for the Session authentication """
 
-from flask import Flask, jsonify, request, abort, make_response
+from flask import jsonify, request, abort, make_response
 from models.user import User
 import os
-from api.v1.app import auth
+from api.v1.views import app_views
 
-app = Flask(__name__)
 
-@app.route('/auth_session/login', methods=['POST'], strict_slashes=False)
+@app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def login():
-    """ longin route """
+    """ login route """
     email = request.form.get('email')
     if not email:
         return jsonify({"error": "email missing"}), 400
@@ -29,6 +28,7 @@ def login():
         return jsonify({"error": "wrong password"}), 401
 
     """ Create session ID for the User ID """
+    from api.v1.app import auth
     session_id = auth.create_session(user.id)
 
     """ return dictionary representation of the User and set the cookie """
@@ -38,7 +38,3 @@ def login():
     response.set_cookie(session_name, session_id)
 
     return response
-
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port="5000")
