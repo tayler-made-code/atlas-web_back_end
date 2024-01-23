@@ -7,14 +7,14 @@ from user import User
 
 
 def _hash_password(password: str) -> bytes:
-        """ Method that takes in a password string arguments and returns bytes.
-        """
-        if isinstance(password, str):
-            password = password.encode('utf-8')
+    """ Method that takes in a password string arguments and returns bytes.
+    """
+    if isinstance(password, str):
+        password = password.encode('utf-8')
 
-        salt = bcrypt.gensalt()
-        hashed_password = bcrypt.hashpw(password, salt)
-        return hashed_password
+    salt = bcrypt.gensalt()
+    hashed_password = bcrypt.hashpw(password, salt)
+    return hashed_password
 
 
 class Auth:
@@ -34,5 +34,6 @@ class Auth:
             user = self._db.add_user(email, hashed_password)
             return user
 
+
 def __init__(self):
-        self._db = DB()
+    self._db = DB()
