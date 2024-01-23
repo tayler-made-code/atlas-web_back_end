@@ -49,7 +49,7 @@ class DB:
         session = self._session
         try:
             result = session.query(User).filter_by(**kwargs).one_or_none()
-            if result == None:
+            if result is None:
                 raise NoResultFound("No user found.")
             return result
         except InvalidRequestError as e:
