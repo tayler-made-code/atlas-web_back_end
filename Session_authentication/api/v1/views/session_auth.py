@@ -4,10 +4,10 @@
 
 from flask import Flask, jsonify, request, abort, make_response
 from models.user import User
-from api.v1.auth.auth import Auth
+import os
+from api.v1.app import auth
 
 app = Flask(__name__)
-
 
 @app.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def login():
@@ -34,7 +34,7 @@ def login():
     """ return dictionary representation of the User and set the cookie """
     user_json = user.to_json()
     response = make_response(user_json)
-    session_name = getenv('SESSION_NAME')
+    session_name = os.getenv('SESSION_NAME')
     response.set_cookie(session_name, session_id)
 
     return response
