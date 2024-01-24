@@ -15,7 +15,6 @@ class Auth:
         """ Instance of the Auth class """
         self._db = DB()
 
-    @staticmethod
     def _hash_password(password: str) -> bytes:
         """ Method that takes in a password string arguments and returns bytes.
         """
