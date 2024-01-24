@@ -19,20 +19,18 @@ def home() -> str:
 
 @app.route('/users', methods=['POST'])
 def register_user():
+    email = request.form.get('email')
+    password = request.form.get('password')
     try:
-        email = request.form.get('email')
-        password = request.form.get('password')
-        AUTH.register(email, password)
-        response = {
-            'email': email,
+        new_user = AUTH.register_user(email, password)
+        return jsonify({
+            'email': new_user.email,
             'message': 'user created'
-        }
-        return jsonify(response), 200
-    except Exception as e:
-        response = {
+        })
+    except ValueError:
+        return jsonify({
             'message': 'email already registered'
-        }
-        return jsonify(response), 400
+        }), 400
 
 
 if __name__ == "__main__":
