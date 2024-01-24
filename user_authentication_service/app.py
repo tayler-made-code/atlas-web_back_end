@@ -2,9 +2,11 @@
 
 """ Basic Flask app """
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
+from auth import Auth
 
 app = Flask(__name__)
+AUTH = Auth()
 
 
 @app.route('/', methods=['GET'])
@@ -13,6 +15,24 @@ def home() -> str:
         'message': 'Bienvenue'
     }
     return jsonify(response), 200
+
+
+@app.route('/users', methods=['POST'])
+def register_user():
+    try:
+        email = request.form.get('email')
+        password = request.form.get('password')
+        AUTH.register(email, password)
+        response = {
+            'email': email,
+            'message': 'user created'
+        }
+        return jsonify(response), 200
+    except Exception as e:
+        response = {
+            'message': 'email already registered'
+        }
+        return jsonify(response), 400
 
 
 if __name__ == "__main__":
