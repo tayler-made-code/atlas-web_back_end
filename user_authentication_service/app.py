@@ -37,22 +37,16 @@ def register_user():
 def login():
     email = request.form.get('email')
     password = request.form.get('password')
-    try:
-        user = AUTH.login_user(email, password)
-        if not user:
-            abort(401)
-        else:
-            session_id = AUTH.create_session(user.id)
-            response = make_response(jsonify({
-                'email': user.email,
-                'message': 'logged in'
-            }))
-            response.set_cookie('session_id', session_id)
-            return response
-    except ValueError:
-        return jsonify({
-            'message': 'Invalid login credentials'
-        }), 401
+    if AUTH.valid_login(email, password):
+        session_id = AUTH.create_session(email)
+        response = make_response(jsonify({
+            'email': email,
+            'message': 'logged in'
+        }), 200)
+        response.set_cookie('session_id', session_id)
+        return response
+    else:
+        abort(401)
 
 
 if __name__ == "__main__":
