@@ -3,6 +3,7 @@
 """ Basic Flask app """
 
 from flask import Flask, jsonify, request, make_response, abort
+from flask import redirect, url_for
 from auth import Auth
 
 app = Flask(__name__)
@@ -49,14 +50,13 @@ def login():
         abort(401)
 
 
-@app.route('/profile', methods=['GET'])
-def profile():
+@app.route('/profile', methods=['DELETE'])
+def logout():
     session_id = request.cookies.get('session_id')
     user = AUTH.get_user_from_session_id(session_id)
     if user:
-        return jsonify({
-            'email': user.email
-        })
+        AUTH.destroy_session(user.id)
+        return redirect(url_for('home'))
     else:
         abort(403)
 
