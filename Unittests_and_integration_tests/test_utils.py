@@ -3,7 +3,7 @@
 """ Unittests for utils.py """
 
 import unittest
-from parameterized import parameterized, parameterized_class
+from parameterized import parameterized
 from utils import access_nested_map
 
 
@@ -23,8 +23,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ({}, ("a",), KeyError),
         ({"a": 1}, ("a", "b"), KeyError)
     ])
-    def test_access_nested_map_exception(self, nested_map, path):
+    def test_access_nested_map_exception(self, nested_map, path, expected):
         """ Test access_nested_map function with exception """
-        with self.assertRaises(KeyError) as context:
+        with self.assertRaises(expected):
             access_nested_map(nested_map, path)
-        self.assertTrue('KeyError' in str(context.exception))
