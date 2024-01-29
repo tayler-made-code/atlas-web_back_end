@@ -3,7 +3,7 @@
 """ Unittests for utils.py """
 
 import unittest
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch, Mock
 from parameterized import parameterized
 from utils import access_nested_map, get_json
 
@@ -32,7 +32,6 @@ class TestAccessNestedMap(unittest.TestCase):
 class TestGetJson(unittest.TestCase):
     """ Class for testing get_json function """
 
-    @patch('requests.get')
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False})
@@ -41,17 +40,19 @@ class TestGetJson(unittest.TestCase):
         """ Test get json function """
 
         """ create a mock response object with a json method """
-        mock_response = MagicMock()
+        mock_response = Mock()
         mock_response.json.return_value = test_payload
 
-        """ Configure the mock to return our mock response when called"""
-        mock_get.return_value = mock_response
+        with patch('requests.get') as mock_get:
+            
+            """ patch requests.get to return our mock response """
+            mock_get.return_value = mock_response
 
-        """ Call the function under test """
-        result = get_json(test_url)
+            """ Call the function under test """
+            result = get_json(test_url)
 
-        """ Assert that the mock was called with the right arguments """
-        mock_get.assert_called_once_with(test_url)
+            """ Assert that the mock was called with the right arguments """
+            mock_get.assert_called_once_with(test_url)
 
-        """ Assert that the function returned the expected result """
-        self.assertEqual(result, test_payload)
+            """ Assert that the function returned the expected result """
+            self.assertEqual(result, test_payload)
