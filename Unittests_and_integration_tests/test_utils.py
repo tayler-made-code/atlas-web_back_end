@@ -56,3 +56,25 @@ class TestGetJson(unittest.TestCase):
 
             """ Assert that the function returned the expected result """
             self.assertEqual(result, test_payload)
+
+class TestMemoize(unittest.TestCase):
+    """ Class for testing memoize function """
+
+    def test_memoize(self):
+        """ Test memoize function """
+
+        class TestClass:
+            """ Test class """
+
+            def a_method(self):
+                return 42
+
+            @memoize
+            def a_property(self):
+                return self.a_method()
+
+        test = TestClass()
+        test.a_property
+        test.a_property
+
+        self.assertEqual(test.a_property, 42)
