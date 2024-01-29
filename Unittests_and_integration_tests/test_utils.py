@@ -29,6 +29,7 @@ class TestAccessNestedMap(unittest.TestCase):
         with self.assertRaises(expected):
             access_nested_map(nested_map, path)
 
+
 class TestGetJson(unittest.TestCase):
     """ Class for testing get_json function """
 
@@ -44,7 +45,7 @@ class TestGetJson(unittest.TestCase):
         mock_response.json.return_value = test_payload
 
         with patch('requests.get') as mock_get:
-            
+
             """ patch requests.get to return our mock response """
             mock_get.return_value = mock_response
 
@@ -56,6 +57,7 @@ class TestGetJson(unittest.TestCase):
 
             """ Assert that the function returned the expected result """
             self.assertEqual(result, test_payload)
+
 
 class TestMemoize(unittest.TestCase):
     """ Class for testing memoize function """
