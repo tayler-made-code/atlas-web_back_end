@@ -4,6 +4,7 @@ import unittest
 from unittest.mock import patch, Mock
 from parameterized import parameterized
 from client import GithubOrgClient
+import client
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -18,11 +19,12 @@ class TestGithubOrgClient(unittest.TestCase):
         """ Test GithubOrgClient.org method """
 
         """ Create a mock response """
-        mock_response = Mock()
-        mock_response.json.return_value = {'login': org}
+        github_org_client = GithubOrgClient(test_org_name)
 
-        """ patch get_json to return mock response """
-        mock_get_json.return_value = mock_response
+        """ Test that GithubOrgClient.org returns the correct value """
+        github_org_client.org()
 
-        """ create an instance of GithubOrgClient """
-        github_client = GithubOrgClient()
+        """ Test that get_json was called once """
+        mock_get_json.assert_called_once_with(
+            "https://api.github.com/orgs/{}".format(test_org_name)
+        )
