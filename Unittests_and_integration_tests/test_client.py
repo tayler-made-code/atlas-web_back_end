@@ -6,6 +6,7 @@ from parameterized import parameterized
 from client import GithubOrgClient
 from typing import List
 
+
 class TestGithubOrgClient(unittest.TestCase):
     """ Class for testing GithubOrgClient """
 
@@ -56,7 +57,9 @@ class TestGithubOrgClient(unittest.TestCase):
         mock_get_json.return_value = mock_response
 
         # Define a mock URL
-        mock_public_repos_url.return_value = "https://api.github.com/orgs/google/repos"
+        mock_public_repos_url.return_value = (
+            "https://api.github.com/orgs/google/repos"
+            )
 
         # Test that GithubOrgClient.public_repos returns the correct value
         github_org_client = GithubOrgClient("google")
