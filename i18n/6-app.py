@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 
-""" basic Flask app in 4-app.py """
+""" basic Flask app in 6-app.py """
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, g
 from flask_babel import Babel
+import pytz
+from pytz.exceptions import UnknownTimeZoneError
 
 
 class Config(object):
@@ -30,7 +32,7 @@ def get_locale():
 @app.route('/')
 def hello_world():
     """ render a template """
-    return render_template('4-index.html')
+    return render_template('6-index.html')
 
 
 def get_user(user_id):
@@ -52,3 +54,23 @@ def before_request():
         flask.g.user = get_user(user_id)
     else:
         flask.g.user = None
+
+
+@babel.timezoneselector
+def get_timezone():
+    if 'timezone' in request.args:
+        try:
+            pytz.timezone(request.args['timezone'])
+            return request.args['timezone']
+        except UnknownTimeZoneError:
+            pass
+
+    user = getattr(g, 'user', None)
+    if user is not None and 'timezone' in user:
+        try:
+            pytz.timezone(user['timezone'])
+            return user['timezone']
+        except UnknownTimeZoneError:
+            pass
+
+    return 'UTC'

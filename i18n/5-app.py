@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-""" basic Flask app in 4-app.py """
+""" basic Flask app in 5-app.py """
 
 from flask import Flask, render_template, request
 from flask_babel import Babel
@@ -30,7 +30,7 @@ def get_locale():
 @app.route('/')
 def hello_world():
     """ render a template """
-    return render_template('4-index.html')
+    return render_template('5-index.html')
 
 
 def get_user(user_id):
