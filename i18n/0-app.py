@@ -9,4 +9,4 @@ app = Flask(__name__)
 @app.route('/', strict_slashes=False)
 def hello_world():
     """ return a simple string for starters """
-    return 'Hello HBNB!'
+    return 'Welcome to Holberton'
