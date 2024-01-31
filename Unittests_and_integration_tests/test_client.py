@@ -4,7 +4,6 @@ import unittest
 from unittest.mock import patch, Mock, PropertyMock
 from parameterized import parameterized
 from client import GithubOrgClient
-from typing import List
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -44,31 +43,30 @@ class TestGithubOrgClient(unittest.TestCase):
             "https://api.github.com/orgs/google/repos"
             )
 
-    @patch('client.GithubOrgClient.get_json')
-    @patch('client.GithubOrgClient._public_repos_url')
-    def test_public_repos(self, mock_public_repos_url, mock_get_json):
-        """ Test GithubOrgClient.public_repos method with license """
-
-        # Define a mock response
-        mock_response = [
-            {"name": "repo1", "license": "MIT"},
-            {"name": "repo2", "license": "MIT"}
+    @patch('client.get_json')
+    def test_public_repos(self, mock_get_json):
+        """ Test GithubOrgClient.public_repos """
+        mock_get_json.return_value = [
+            {"name": "repo1"},
+            {"name": "repo2"},
         ]
-        mock_get_json.return_value = mock_response
+        with patch.object(
+            GithubOrgClient,
+            '_public_repos_url',
+            new_callable=PropertyMock
+        ) as mock_public_repos_url:
+            mock_public_repos_url.return_value = "www.yes.com"
+            test_class = GithubOrgClient("test")
+            result = test_class.public_repos()
+            self.assertEqual(result, ["repo1", "repo2"])
+            mock_public_repos_url.assert_called_once()
+            mock_get_json.assert_called_once()
 
-        # Define a mock URL
-        mock_public_repos_url.return_value = (
-            "https://api.github.com/orgs/google/repos"
-        )
-
-        # Test that GithubOrgClient.public_repos returns the correct value
-        github_org_client = GithubOrgClient("google")
-        result = github_org_client.public_repos(license="MIT")
-
-        # Assert that the result is as expected
-        expected_result = ["repo1", "repo2"]
-        self.assertEqual(result, expected_result)
-
-        # Assert that the mocked methods were called exactly once
-        mock_get_json.assert_called_once()
-        mock_public_repos_url.assert_called_once()
+    @parameterized.expand([
+        ({'license': {'key': 'my_license'}}, 'my_license', True),
+        ({'license': {'key': 'other_license'}}, 'my_license', False),
+    ])
+    def test_has_license(self, repo, license_key, expected):
+        """Test GithubOrgClient.has_license"""
+        self.assertEqual(GithubOrgClient.has_license(repo, license_key),
+                         expected)
