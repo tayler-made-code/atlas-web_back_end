@@ -26,10 +26,12 @@ def get_locale():
         return request.args['locale']
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
+
 @app.route('/')
 def hello_world():
     """ render a template """
     return render_template('4-index.html')
+
 
 def get_user(user_id):
     """ returns a user dictionary or None if ID cannot be found """
@@ -40,6 +42,7 @@ def get_user(user_id):
         4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
     }
     return users.get(int(user_id))
+
 
 @app.before_request
 def before_request():
