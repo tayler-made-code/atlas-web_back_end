@@ -39,10 +39,11 @@ class TestGithubOrgClient(unittest.TestCase):
         """ Test that GithubOrgClient._public_repos_url returns
             the correct value """
         github_org_client = GithubOrgClient("google")
-        self.assertEqual(github_org_client._public_repos_url,
-                        "https://api.github.com/orgs/google/repos")
+        self.assertEqual(
+            github_org_client._public_repos_url,
+            "https://api.github.com/orgs/google/repos"
+            )
 
-    
     @patch('client.GithubOrgClient._public_repos_url')
     def test_public_repos(self, mock_public_repos_url):
         """ Test GithubOrgClient.public_repos method """
@@ -52,8 +53,10 @@ class TestGithubOrgClient(unittest.TestCase):
             "https://api.github.com/orgs/google/repos"
             )
 
-        """ Test that GithubOrgClient.public_repos returns the 
+        """ Test that GithubOrgClient.public_repos returns the
             correct value """
         github_org_client = GithubOrgClient("google")
-        self.assertEqual(github_org_client._public_repos_url,
-                        "https://api.github.com/orgs/google/repos")
+        self.assertEqual(
+            github_org_client._public_repos_url,
+            "https://api.github.com/orgs/google/repos"
+            )
