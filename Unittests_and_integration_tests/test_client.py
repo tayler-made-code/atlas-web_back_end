@@ -46,10 +46,14 @@ class TestGithubOrgClient(unittest.TestCase):
     @patch('client.get_json')
     def test_public_repos(self, mock_get_json):
         """ Test GithubOrgClient.public_repos """
+
         mock_get_json.return_value = [
             {"name": "repo1"},
             {"name": "repo2"},
         ]
+
+        """ Test that GithubOrgClient.public_repos returns the
+            correct value """
         with patch.object(
             GithubOrgClient,
             '_public_repos_url',
@@ -62,6 +66,8 @@ class TestGithubOrgClient(unittest.TestCase):
             mock_public_repos_url.assert_called_once()
             mock_get_json.assert_called_once()
 
+    """ Test GithubOrgClient.public_repos with the
+        side_effect """
     @parameterized.expand([
         ({'license': {'key': 'my_license'}}, 'my_license', True),
         ({'license': {'key': 'other_license'}}, 'my_license', False),
