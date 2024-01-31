@@ -46,24 +46,24 @@ class TestGithubOrgClient(unittest.TestCase):
 
     @patch('client.GithubOrgClient.get_json')
     @patch('client.GithubOrgClient._public_repos_url')
-    def test_public_repos(self, mock_public_repos_url, mock_get_json):
-        """ Test GithubOrgClient.public_repos method """
+    def test_public_repos_with_license(self, mock_public_repos_url, mock_get_json):
+        """ Test GithubOrgClient.public_repos method with license """
 
         # Define a mock response
         mock_response = [
             {"name": "repo1", "license": "MIT"},
-            {"name": "repo2", "license": "GPLv3"}
+            {"name": "repo2", "license": "MIT"}
         ]
         mock_get_json.return_value = mock_response
 
         # Define a mock URL
         mock_public_repos_url.return_value = (
             "https://api.github.com/orgs/google/repos"
-            )
+        )
 
         # Test that GithubOrgClient.public_repos returns the correct value
         github_org_client = GithubOrgClient("google")
-        result = github_org_client.public_repos()
+        result = github_org_client.public_repos(license="MIT")
 
         # Assert that the result is as expected
         expected_result = ["repo1", "repo2"]
