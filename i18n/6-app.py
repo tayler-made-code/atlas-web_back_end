@@ -54,23 +54,3 @@ def before_request():
         flask.g.user = get_user(user_id)
     else:
         flask.g.user = None
-
-
-@babel.timezoneselector
-def get_timezone():
-    if 'timezone' in request.args:
-        try:
-            pytz.timezone(request.args['timezone'])
-            return request.args['timezone']
-        except UnknownTimeZoneError:
-            pass
-
-    user = getattr(g, 'user', None)
-    if user is not None and 'timezone' in user:
-        try:
-            pytz.timezone(user['timezone'])
-            return user['timezone']
-        except UnknownTimeZoneError:
-            pass
-
-    return 'UTC'
