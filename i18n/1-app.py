@@ -2,9 +2,11 @@
 
 """ basic Flask app in 0-app.py """
 
-from flask import Flask, render_template, Babel
+from flask import Flask
+from flask_babel import Babel
 
 app = Flask(__name__)
+babel = Babel(app)
 
 """ Create a single / route and an index.html template that simply outputs """
 @app.route('/')
@@ -18,5 +20,3 @@ class Config(object):
     LANGUAGES = ["en", "fr"]
 
 app.config.from_object('1-app.Config')
-
-if __name__ == "__main__":
