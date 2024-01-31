@@ -10,12 +10,12 @@ class Config(object):
     LANGUAGES = ["en", "fr"]
 
 app = Flask(__name__)
-babel = Babel(app)
 
 app.config["BABEL_DEFAULT_LOCALE"] = "en"
 app.config["BABEL_DEFAULT_TIMEZONE"] = "UTC"
 
 app.config.from_object(Config)
+babel = Babel(app)
 
 """ Create a single / route and an index.html template that simply outputs """
 @app.route('/')
