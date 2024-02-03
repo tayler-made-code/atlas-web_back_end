@@ -32,3 +32,18 @@ class Cache:
             self._redis.set(key, str(data))
 
         return key
+    
+    def get(self, key: str, fn: callable) -> Union[str, int, bytes]:
+        """ Automatically parametrize the return type """
+        value = self._redis.get(key)
+        return fn(value)
+
+    def get_str(self, key: str, fn: callable) -> Union[str, int, bytes]:
+        """ Automatically parametrize the return type """
+        value = self._redis.get(key)
+        return fn(value)
+
+    def get_int(self, key: str, fn: callable) -> Union[str, int, bytes]:
+        """ Automatically parametrize the return type """
+        value = self._redis.get(key)
+        return fn(value)
