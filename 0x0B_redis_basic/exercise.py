@@ -3,7 +3,7 @@
 """ Cache Class """
 
 import redis
-from typing import Union
+from typing import Union, Callable
 import uuid
 
 
@@ -33,17 +33,17 @@ class Cache:
 
         return key
     
-    def get(self, key: str) -> Union[str, bytes, None]:
+    def get(self, key: str, fn: callable) -> Union[str, bytes, None]:
         """ Automatically parametrize the return type """
         value = self._redis.get(key)
         return value.decode('utf-8') if value else None
 
-    def get_str(self, key: str) -> Union[str, None]:
+    def get_str(self, key: str, fn: callable) -> Union[str, None]:
         """ Automatically parametrize the return type """
         value = self._redis.get(key)
         return value.decode('utf-8') if value else None
 
-    def get_int(self, key: str) -> Union[int, None]:
+    def get_int(self, key: str, fn: callable) -> Union[int, None]:
         """ Automatically parametrize the return type """
         value = self._redis.get(key)
         return int(value.decode('utf-8')) if value else None
