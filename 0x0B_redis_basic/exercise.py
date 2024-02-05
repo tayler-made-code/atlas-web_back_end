@@ -33,17 +33,17 @@ class Cache:
 
         return key
     
-    def get(self, key: str, fn: callable) -> Union[str, int, bytes]:
+    def get(self, key: str) -> Union[str, bytes, None]:
         """ Automatically parametrize the return type """
         value = self._redis.get(key)
-        return fn(value)
+        return value.decode('utf-8')
 
-    def get_str(self, key: str, fn: callable) -> Union[str, int, bytes]:
+    def get_str(self, key: str) -> Union[str, None]:
         """ Automatically parametrize the return type """
         value = self._redis.get(key)
-        return fn(value)
+        return value.decode('utf-8')
 
-    def get_int(self, key: str, fn: callable) -> Union[str, int, bytes]:
+    def get_int(self, key: str) -> Union[int, None]:
         """ Automatically parametrize the return type """
         value = self._redis.get(key)
-        return fn(value)
+        return int(value.decode('utf-8'))
