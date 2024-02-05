@@ -36,14 +36,14 @@ class Cache:
     def get(self, key: str) -> Union[str, bytes, None]:
         """ Automatically parametrize the return type """
         value = self._redis.get(key)
-        return value.decode('utf-8')
+        return value.decode('utf-8') if value else None
 
     def get_str(self, key: str) -> Union[str, None]:
         """ Automatically parametrize the return type """
         value = self._redis.get(key)
-        return value.decode('utf-8')
+        return value.decode('utf-8') if value else None
 
     def get_int(self, key: str) -> Union[int, None]:
         """ Automatically parametrize the return type """
         value = self._redis.get(key)
-        return int(value.decode('utf-8'))
+        return int(value.decode('utf-8')) if value else None
