@@ -14,7 +14,7 @@ def count_calls(method: Callable) -> Callable:
     @wraps(method)
     def wrapper(self, *args, **kwargs):
         """ use the qualified method name as a key """
-        key = f"{type(self).__name__}.{method.__qualname__}"
+        key = method.__qualname__
 
         """ increment the key in redis  using incr command """
         self._redis.incr(key)
