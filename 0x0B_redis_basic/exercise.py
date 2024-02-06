@@ -3,7 +3,7 @@
 """ Cache Class """
 
 import redis
-from typing import Union, Callable
+from typing import Union, Callable, Optional, Any
 import uuid
 
 
@@ -32,18 +32,33 @@ class Cache:
             self._redis.set(key, str(data))
 
         return key
-    
-    def get(self, key: str, fn: callable) -> Union[str, bytes, None]:
-        """ Automatically parametrize the return type """
-        value = self._redis.get(key)
-        return value.decode('utf-8') if value else None
 
-    def get_str(self, key: str, fn: callable) -> Union[str, None]:
-        """ Automatically parametrize the return type """
+    def get(self, key: str, fn: Optional[Callable] = None) -> Any:
+        """ Get data from redis with an optional callback function """
         value = self._redis.get(key)
-        return value.decode('utf-8') if value else None
+        if value is None:
+            return None
+        if fn is not None:
+            return fn(value)
+        return value
 
-    def get_int(self, key: str, fn: callable) -> Union[int, None]:
+    def get_str(self, key: str) -> Optional[str]:
         """ Automatically parametrize the return type """
-        value = self._redis.get(key)
-        return int(value.decode('utf-8')) if value else None
+        if key is None:
+            return None
+        value = self.get(key)
+        if value is not None:
+            return value.decode('utf-8')
+        return value
+
+    def get_int(self, key: str) -> Union[int, None]:
+        """ Automatically parametrize the return type """
+        if key is None:
+            return None
+        value = self.get(key)
+        if value is not None:
+            try:
+                return int(value)
+            except Exception as e:
+                raise ValueError(f"Value at {key} is not an integer") from e
+        return None
