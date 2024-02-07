@@ -4,7 +4,7 @@
 
 import redis
 from typing import Union, Callable, Optional, Any
-from functools import wraps, cache
+from functools import wraps
 import uuid
 
 
@@ -54,7 +54,10 @@ def call_history(method: Callable) -> Callable:
 
 def replay(method: Callable) -> None:
     """ display the history of calls of a particular function """
-    
+
+    """ create a redis instance """
+    r = redis.Redis()
+
     """ Get the qualified method name """
     key = method.__qualname__
 
@@ -62,8 +65,8 @@ def replay(method: Callable) -> None:
     output_list_key = key + ":outputs"
 
     """ get the input and output histories from Redis """
-    inputs = cache._redis.lrange(input_list_key, 0, -1)
-    outputs = cache._redis.lrange(output_list_key, 0, -1)
+    inputs = r.lrange(input_list_key, 0, -1)
+    outputs = r.lrange(output_list_key, 0, -1)
 
     """ print the number of calls """
     print(f"{key} was called {len(inputs)} times:")
