@@ -38,7 +38,7 @@ def call_history(method: Callable) -> Callable:
         output_list_key = key + ":outputs"
 
         """ append the input arguments to the input list in Redis """
-        self._redis.rpush(input_list_key, *map(str, args))
+        self._redis.rpush(input_list_key, str(args))
 
         """ execute the wrapper function """
         result = method(self, *args, **kwargs)
