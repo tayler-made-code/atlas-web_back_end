@@ -4,7 +4,7 @@
 
 import redis
 from typing import Union, Callable, Optional, Any
-from functools import wraps
+from functools import wraps, cache
 import uuid
 
 
@@ -50,6 +50,32 @@ def call_history(method: Callable) -> Callable:
         return result
 
     return wrapper
+
+
+def replay(method: Callable) -> None:
+    """ display the history of calls of a particular function """
+    
+    """ Get the qualified method name """
+    key = method.__qualname__
+
+    input_list_key = key + ":inputs"
+    output_list_key = key + ":outputs"
+
+    """ get the input and output histories from Redis """
+    inputs = cache._redis.lrange(input_list_key, 0, -1)
+    outputs = cache._redis.lrange(output_list_key, 0, -1)
+
+    """ print the number of calls """
+    print(f"{key} was called {len(inputs)} times:")
+
+    """ iterate over the inputs and the outputs and print them """
+    for i, (input_str, output_str) in enumerate(zip(inputs, outputs)):
+        """ decode the input and output from bytes to str """
+        input_tuple = eval(input_str.decode('utf-8'))
+        output_key = output_str.decode('utf-8')
+
+        """ format and print the input and output """
+        print(f"{key}(*{input_tuple}) -> {output_key}")
 
 
 class Cache:
