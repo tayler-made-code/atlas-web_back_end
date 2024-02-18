@@ -1,4 +1,5 @@
 #Resources
+
 ###Read or watch:
 
 [Node JS getting started](https://nodejs.org/en/learn/getting-started/introduction-to-nodejs)
@@ -10,6 +11,7 @@
 
 
 #Learning Objectives
+
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
 
 -run javascript using NodeJS
@@ -24,6 +26,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 
 
 #Requirements
+
 -Allowed editors: vi, vim, emacs, Visual Studio Code
 -All your files will be interpreted/compiled on Ubuntu 18.04 LTS using node (version 12.x.x)
 -All your files should end with a new line
