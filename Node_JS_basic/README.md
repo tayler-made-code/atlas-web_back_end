@@ -1,6 +1,6 @@
-#Resources
+# Resources
 
-###Read or watch:
+### Read or watch:
 
 [Node JS getting started](https://nodejs.org/en/learn/getting-started/introduction-to-nodejs)
 [Process API doc](https://node.readthedocs.io/en/latest/api/process/)
@@ -10,7 +10,7 @@
 [Nodemon documentation](https://github.com/remy/nodemon#nodemon)
 
 
-#Learning Objectives
+# Learning Objectives
 
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
 
@@ -25,7 +25,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 -use Nodemon to develop faster
 
 
-#Requirements
+# Requirements
 
 -Allowed editors: vi, vim, emacs, Visual Studio Code
 -All your files will be interpreted/compiled on Ubuntu 18.04 LTS using node (version 12.x.x)
@@ -38,7 +38,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 -All of your functions/classes must be exported by using this format: module.exports = myFunction;
 
 
-#Provided files
+# Provided files
 
 ==database.csv==
 ```
@@ -55,7 +55,7 @@ Tommy,Schoul,32,SWE
 Katie,Shirou,21,CS
 ```
 
-##==package.json==
+## ==package.json==
 <details>
   <summary>Click to show/hide file contents</summary>
   ```
@@ -93,7 +93,7 @@ Katie,Shirou,21,CS
   ```
 </details>
 
-##==babel.config.js==
+## ==babel.config.js==
 <details>
   <summary>Click to show/hide file contents</summary>
   ```
@@ -112,7 +112,7 @@ Katie,Shirou,21,CS
   '''
 </details>
 
-##==.eslintrc.js==
+## ==.eslintrc.js==
 <details>
   <summary>Click to show/hide file contents</summary>
   ```
