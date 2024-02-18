@@ -175,7 +175,7 @@ Don’t forget to run `$ npm install` when you have the `package.json`
 
 ## 0. Executing basic javascript with Node JS
 
-In the file `0-console.js`, create a function named displayMessage that prints in `STDOUT` the string argument
+In the file `0-console.js`, create a function named `displayMessage` that prints in `STDOUT` the string argument
 
 ```
 Obi-Wan@Kenobi-MBP$ cat 0-main.js
