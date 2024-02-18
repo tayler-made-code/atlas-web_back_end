@@ -2,12 +2,17 @@
 
 ### Read or watch:
 
-> [Node JS getting started](https://nodejs.org/en/learn/getting-started/introduction-to-nodejs)
-> [Process API doc](https://node.readthedocs.io/en/latest/api/process/)
-> [Child process](https://nodejs.org/api/child_process.htm)
-> [Express getting started](https://expressjs.com/en/starter/installing.html)
-> [Mocha documentation](https://mochajs.org/)
-> [Nodemon documentation](https://github.com/remy/nodemon#nodemon)
+- [Node JS getting started](https://nodejs.org/en/learn/getting-started/introduction-to-nodejs)
+
+- [Process API doc](https://node.readthedocs.io/en/latest/api/process/)
+
+- [Child process](https://nodejs.org/api/child_process.htm)
+
+- [Express getting started](https://expressjs.com/en/starter/installing.html)
+
+- [Mocha documentation](https://mochajs.org/)
+
+- [Nodemon documentation](https://github.com/remy/nodemon#nodemon)
 
 
 # Learning Objectives
@@ -40,7 +45,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 
 # Provided files
 
-== database.csv ==
+## <b>database.csv</b>
 ```
 firstname,lastname,age,field
 Johann,Kerbrou,30,CS
@@ -55,7 +60,7 @@ Tommy,Schoul,32,SWE
 Katie,Shirou,21,CS
 ```
 
-## ==package.json==
+## <b>package.json</b>
 <details>
   <summary>Click to show/hide file contents</summary>
   ```js
@@ -93,7 +98,7 @@ Katie,Shirou,21,CS
   ```
 </details>
 
-## ==babel.config.js==
+## <b>babel.config.js</b>
 <details>
   <summary>Click to show/hide file contents</summary>
   ```js
@@ -112,7 +117,7 @@ Katie,Shirou,21,CS
   '''
 </details>
 
-## .eslintrc.js
+## <b>.eslintrc.js</b>
 <details>
   <summary>Click to show/hide file contents</summary>
   ```js
