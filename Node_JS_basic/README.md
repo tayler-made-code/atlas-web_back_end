@@ -63,6 +63,7 @@ Katie,Shirou,21,CS
 ## <b>package.json</b>
 <details>
   <summary>Click to show/hide file contents</summary>
+  
   ```js
   {
     "name": "node_js_basics",
@@ -101,6 +102,7 @@ Katie,Shirou,21,CS
 ## <b>babel.config.js</b>
 <details>
   <summary>Click to show/hide file contents</summary>
+
   ```js
   module.exports = {
     presets: [
@@ -114,12 +116,13 @@ Katie,Shirou,21,CS
       ],
     ],
   };
-  '''
+  ```
 </details>
 
 ## <b>.eslintrc.js</b>
 <details>
   <summary>Click to show/hide file contents</summary>
+
   ```js
   module.exports = {
     env: {
@@ -162,4 +165,4 @@ Katie,Shirou,21,CS
 </details>
 
 and…
-Don’t forget to run ==$ npm install== when you have the ==package.json==
+Don’t forget to run <b>$ npm install</b> when you have the <b>package.json</b>
