@@ -22,7 +22,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 - run javascript using NodeJS
 - use NodeJS modules
 - use specific Node JS module to read files
-- use process to access command line arguments and the environment
+- use `process` to access command line arguments and the environment
 - create a small HTTP server using Node JS
 - create a small HTTP server using Express JS
 - create advanced routes with Express JS
@@ -32,21 +32,21 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 
 # Requirements
 
-- Allowed editors: vi, vim, emacs, Visual Studio Code
-- All your files will be interpreted/compiled on Ubuntu 18.04 LTS using node (version 12.x.x)
+- Allowed editors: `vi`, `vim`, `emacs`, `Visual Studio Code`
+- All your files will be interpreted/compiled on Ubuntu 18.04 LTS using `node` (version 12.x.x)
 - All your files should end with a new line
-- A README.md file, at the root of the folder of the project, is mandatory
-- Your code should use the js extension
-- Your code will be tested using Jest and the command npm run test
+- A `README.md` file, at the root of the folder of the project, is mandatory
+- Your code should use the `js` extension
+- Your code will be tested using `Jest` and the command npm run test
 - Your code will be verified against lint using ESLint
-- Your code needs to pass all the tests and lint. You can verify the entire project running npm run full-test
-- All of your functions/classes must be exported by using this format: module.exports = myFunction;
+- Your code needs to pass all the tests and lint. You can verify the entire project running `npm run full-test`
+- All of your functions/classes must be exported by using this format: `module.exports = myFunction;`
 
 
 # Provided files
 
 ## <b>database.csv</b>
-```
+```sh
 firstname,lastname,age,field
 Johann,Kerbrou,30,CS
 Guillaume,Salou,30,SWE
@@ -63,7 +63,7 @@ Katie,Shirou,21,CS
 ## <b>package.json</b>
 <details>
   <summary>Click to show/hide file contents</summary>
-  
+
   ```js
   {
     "name": "node_js_basics",
@@ -165,4 +165,4 @@ Katie,Shirou,21,CS
 </details>
 
 and…
-Don’t forget to run <b>$ npm install</b> when you have the <b>package.json</b>
+Don’t forget to run `$ npm install` when you have the `package.json`
