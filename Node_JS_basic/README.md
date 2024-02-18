@@ -198,6 +198,20 @@ Create a program named `1-stdin.js` that will be executed through command line:
   - The program should display `Your name is: INPUT`
   - When the user ends the program, it should display `This important software is now closing` (followed by a new line)
 
-  ### Requirements:
+  <b>Requirements:</b>
   - Your code will be tested through a child process, make sure you have everything you need for that.
-  
+
+```
+Obi-Wan@Kenobi-MBP$ node 1-stdin.js 
+Welcome to Holberton School, what is your name?
+Bob
+Your name is: Bob
+Obi-Wan@Kenobi-MBP$ 
+Obi-Wan@Kenobi-MBP$ echo "John" | node 1-stdin.js 
+Welcome to Holberton School, what is your name?
+Your name is: John
+This important software is now closing
+Obi-Wan@Kenobi-MBP$
+```
+
+---
