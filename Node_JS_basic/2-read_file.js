@@ -8,7 +8,7 @@ function countStudents(filePath) {
   try {
     // Read the database file synchronously
     const data = fs.readFileSync(fullPath, 'utf-8');
-    
+
     // Split the data by lines
     const lines = data.split('\n');
 
@@ -17,8 +17,6 @@ function countStudents(filePath) {
 
     // Remove header
     const students = usedLines.slice(1);
-
-
 
     // Log the number of students
     console.log(`Number of students: ${students.length}`);
@@ -33,7 +31,7 @@ function countStudents(filePath) {
         fields[field] = [student.split(',')[0]];
       }
     }
-    
+
     for (const field in fields) {
       if (field) {
         console.log(`Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`);
@@ -41,7 +39,7 @@ function countStudents(filePath) {
     }
 
   } catch (error) {
-    throw new Error ("Cannot load the database");
+    throw new Error ('Cannot load the database');
   }
 }
 
