@@ -31,15 +31,13 @@ function countStudents(filePath) {
         fields[field] = [student.split(',')[0]];
       }
     }
-
     for (const field in fields) {
       if (field) {
         console.log(`Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`);
       }
     }
-
   } catch (error) {
-    throw new Error ('Cannot load the database');
+    throw Error ('Cannot load the database');
   }
 }
 
