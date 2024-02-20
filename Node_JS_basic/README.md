@@ -2,6 +2,8 @@
 
 ### Read or watch:
 
+- [Node.js Ultimate Beginner’s Guide in 7 Easy Steps](https://www.youtube.com/watch?v=ENrzD9HAZK4)
+
 - [Node JS getting started](https://nodejs.org/en/learn/getting-started/introduction-to-nodejs)
 
 - [Process API doc](https://node.readthedocs.io/en/latest/api/process/)
