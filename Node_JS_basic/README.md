@@ -167,7 +167,9 @@ Katie,Shirou,21,CS
 </details>
 
 and…
-Don’t forget to run `$ npm install` when you have the `package.json`
+## Don’t forget to run `$ npm install` when you have the `package.json`
+
+### To run linter use ./node_modules/.bin/eslint "filename.js"
 
 ---
 
