@@ -8,3 +8,5 @@ var app = http.createServer(function (req, res) {
   res.write('Hello Holberton School!');
   res.end();
 }).listen(1245); // HTTP server should listen on port 1245
+
+module.exports = app;
