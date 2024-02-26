@@ -16,7 +16,7 @@ const path = require('path');
 const app = express();
 
 async function countStudents(filePath) {
-  console.log('starting countStudents')
+  console.log('starting countStudents');
   const fullPath = path.resolve(filePath);
   try {
     const data = await fs.readFile(fullPath, 'utf-8');
@@ -45,7 +45,7 @@ async function countStudents(filePath) {
 
     return studentInfo;
   } catch (error) {
-    throw new Error('Cannot load the database');
+    throw Error('Cannot load the database');
   }
 }
 
@@ -55,9 +55,10 @@ app.get('/', (req, res) => {
 
 app.get('/students', async (req, res) => {
   try {
-    console.log('starting /students')
+    console.log('starting /students');
+    const outputMessage = 'This is the list of our students\n';
     const studentInfo = await countStudents(process.argv[2]);
-    res.send('This is the list of our students\n' + studentInfo);
+    res.send(`${outputMessage}${studentInfo}`);
   } catch (error) {
     res.status(500).send(error.message);
   }
