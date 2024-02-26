@@ -7,6 +7,4 @@ var app = http.createServer(function (req, res) {
   // Displays Hello Holberton School! in the page body
   res.write('Hello Holberton School!');
   res.end();
-});
-// HTTP server should listen on port 1245
-app.listen(1245);
+}).listen(1245); // HTTP server should listen on port 1245
