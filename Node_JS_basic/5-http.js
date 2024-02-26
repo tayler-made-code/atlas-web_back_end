@@ -8,8 +8,6 @@ async function countStudents(filePath) {
     const usedLines = lines.filter((line) => line.length > 0);
     const students = usedLines.slice(1);
 
-    console.log(`Number of students: ${students.length}`);
-
     const fields = {};
     for (const student of students) {
       const field = student.split(',')[3];
@@ -21,6 +19,7 @@ async function countStudents(filePath) {
     }
 
     let response = 'This is the list of our students\n';
+    response += `Number of students: ${students.length}\n`;
     for (const field in fields) {
       if (field) {
         response += `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}\n`;
