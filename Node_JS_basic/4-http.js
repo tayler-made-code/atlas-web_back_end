@@ -1,9 +1,9 @@
 // create a small server using http module
-var http = require('http');
+const http = require('http');
 // Displays Hello Holberton School! in the page body for any endpoint as plain text
 
 // the server should be assigned to the variable app
-var app = http.createServer(function (req, res) {
+const app = http.createServer((req, res) => {
   // Displays Hello Holberton School! in the page body
   res.write('Hello Holberton School!');
   res.end();
