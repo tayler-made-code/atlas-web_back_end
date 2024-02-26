@@ -5,22 +5,22 @@ function countStudents(filePath) {
   // Function that counts the number of students in a database
   // and logs them to the console
   const fullPath = path.resolve(filePath);
-  
+
   return new Promise((resolve, reject) => {
     fs.readFile(fullPath, 'utf-8')
-      .then(data => {
+      .then((data) => {
         // Split the data by lines
         const lines = data.split('\n');
-        
+
         // Remove any empty lines
         const usedLines = lines.filter((line) => line.length > 0);
-        
+
         // Remove header
         const students = usedLines.slice(1);
-        
+
         // Log the number of students
         console.log(`Number of students: ${students.length}`);
-        
+
         // Log the number of students in each field
         const fields = {};
         for (const student of students) {
@@ -38,10 +38,10 @@ function countStudents(filePath) {
         }
         resolve();
       })
-      .catch(error => {
+      .catch(() => {
         reject(Error('Cannot load the database'));
       });
-    });
+  });
 }
 
 module.exports = countStudents;
