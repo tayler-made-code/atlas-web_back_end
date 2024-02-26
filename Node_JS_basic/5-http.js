@@ -3,6 +3,9 @@ const fs = require('fs').promises;
 
 async function countStudents(filePath) {
   try {
+    // check if the file exists
+    await fs.access(filePath);
+
     const data = await fs.readFile(filePath, 'utf-8');
     const lines = data.split('\n');
     const usedLines = lines.filter((line) => line.length > 0);
@@ -32,7 +35,7 @@ async function countStudents(filePath) {
     return response;
   } catch (error) {
     console.error('Error reading file:', error);
-    return 'Error reading file';
+    return 'Cannot load the database';
   }
 }
 
