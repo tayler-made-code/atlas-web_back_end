@@ -115,5 +115,4 @@ describe('calculateNumber', () => {
   it('should return an error message when dividing by 0', () => {
     assert.strictEqual(calculateNumber('DIVIDE', 1, 0), 'Error');
   });
-
 });
