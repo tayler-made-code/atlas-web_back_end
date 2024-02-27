@@ -5,5 +5,8 @@
   "dependencies": {
     "chai": "^4.4.1",
     "mocha": "^10.3.0"
+  },
+  "devDependencies": {
+    "sinon": "^7.5.0"
   }
 }
