@@ -13,7 +13,7 @@
 // It calls the function readDatabase from the utils file, and display in the page the list of first names for the students (ordered by appearance in the database file) in the specified field List: LIST_OF_FIRSTNAMES_IN_THE_FIELD
 // If the database is not available, it should return a status 500 and the error message Cannot load the database
 
-class StudedntsController {
+class StudentsController {
   static getAllStudents(request, response) {
     readDatabase(process.argv[2])
       .then((fields) => {
