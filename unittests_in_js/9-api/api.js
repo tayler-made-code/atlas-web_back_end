@@ -12,6 +12,9 @@ app.listen(port, () => {
   console.log(`API available on localhost port ${port}`);
 });
 
-app.get('/cart/:id([0-9]+)', (req, res) => {
-  res.send(`Payment methods for cart ${req.params.id}`);
+app.get('/cart/:id(\\d+)', (req, res) => {
+  let cartId = req.params.id;
+  res.send(`Payment methods for cart ${cartId}`);
 });
+
+module.exports = app;

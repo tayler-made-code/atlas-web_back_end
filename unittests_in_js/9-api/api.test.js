@@ -1,9 +1,9 @@
 const request = require('request');
 const expect = require('chai').expect;
 
-describe('Index page', () => {
-  const baseUrl = 'http://localhost:7865';
+const baseUrl = 'http://localhost:7865';
 
+describe('Index page', () => {
   it('should return the correct status code', (done) => {
     request.get(baseUrl, (error, response, body) => {
       expect(response.statusCode).to.equal(200);
@@ -17,10 +17,13 @@ describe('Index page', () => {
       done();
     });
   });
+});
 
+describe('Cart page', () => {
   it('should return the correct status code when id is a number', (done) => {
     request.get(`${baseUrl}/cart/12`, (error, response, body) => {
       expect(response.statusCode).to.equal(200);
+      expect(body).to.equal('Payment methods for cart 12');
       done();
     });
   });
