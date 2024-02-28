@@ -63,7 +63,7 @@ describe('Login endpoint', () => {
     const userName = 'Betty';
     request.post({
       url: `${baseUrl}/login`,
-      json: { username },
+      json: { userName },
       headers: { 'Content-Type': 'application/json' }
     }, (error, response, body) => {
       expect(response.statusCode).to.equal(200);

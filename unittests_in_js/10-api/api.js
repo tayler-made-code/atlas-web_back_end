@@ -19,7 +19,7 @@ app.get('/available_payments', (req, res) => {
 
 // Define route for the /login endpoint
 app.post('/login', express.json(), (req, res) => {
-  const username = req.query.userName;
+  const username = req.body.userName;
   res.send(`Welcome ${username}`);
 });
 
