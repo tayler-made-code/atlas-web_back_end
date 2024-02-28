@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 function readDatabase(filePath) {
   // It should read the database asynchronously
   // It should return a promise
@@ -7,7 +9,8 @@ function readDatabase(filePath) {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, 'utf8', (err, data) => {
       if (err) {
-        reject(err);
+        reject(Error('Cannot load the database'));
+        return;
       } else {
         const students = JSON.parse(data);
         const fields = {};
@@ -19,3 +22,5 @@ function readDatabase(filePath) {
     });
   });
 }
+
+module.exports = readDatabase;
