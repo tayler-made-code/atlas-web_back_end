@@ -1,18 +1,10 @@
-// Inside the file named full_server/server.js, create a small Express server:
-
-// It should use the routes defined in full_server/routes/index.js
-// It should use the port 1245
-
-const express = require('express');
-const router = require('./routes/index');
+import express from 'express';
+const route = require('./routes/index');
 
 const app = express();
-const port = 1245;
 
-app.use(router);
+app.use(route);
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+app.listen(1245);
 
 export default app;
